@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HealthAndDamage
 {
-    public abstract class Health : MonoBehaviour, IDamageable
+    public class Health : MonoBehaviour, IDamageable
     {
         public float health { get; set; }
 
@@ -30,7 +30,6 @@ namespace HealthAndDamage
         {
             health += healValue;
         }
-
         public abstract void Death();
     }
 }
