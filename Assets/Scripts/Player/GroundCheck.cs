@@ -19,6 +19,18 @@ namespace Player
 
         void FixedUpdate()
         {
+            for (int i = 0; i < collidingWith.Count; i++)//this loop removes colliders of destroyed objects so you won't fly when an object you're colliding with is destroyed
+            {
+                Collider collider = collidingWith[i];
+                if (collider == null)
+                {
+                    collidingWith.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            Debug.Log(collidingWith.Count);
+
             if (collidingWith.Count > 0)//if colliding with anything
             {
                 framesOffGround = 0;
