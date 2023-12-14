@@ -29,7 +29,7 @@ namespace Player
 
         public void RotateLook(InputAction.CallbackContext context)
         {
-            look.RotateLook(context.ReadValue<Vector2>());
+            look.MouseLook(context.ReadValue<Vector2>());
         }
     }
 }
