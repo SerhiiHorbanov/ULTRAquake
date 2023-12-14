@@ -8,13 +8,15 @@ namespace Player
 
         [SerializeField] float sensitivity;
 
-        public void RotateLook(Vector2 delta)
+        public void MouseLook(Vector2 delta)
+            => RotateLook(delta * sensitivity);
+
+        public void RotateLook(Vector2 rotation)
         {
-            delta *= sensitivity;
+            Vector3 newCameraRotationEuler = cameraTransform.localRotation.eulerAngles + new Vector3(0, rotation.y, 0);
+            cameraTransform.localRotation = Quaternion.Euler(newCameraRotationEuler);
 
-            cameraTransform.localRotation = Quaternion.Euler(cameraTransform.localRotation.eulerAngles.x - delta.y, 0, 0);
-
-            transform.Rotate(0, delta.x, 0);
+            transform.Rotate(0, rotation.x, 0);
         }
     }
 }
