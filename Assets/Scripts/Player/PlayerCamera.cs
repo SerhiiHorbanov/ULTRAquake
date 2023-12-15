@@ -13,7 +13,7 @@ namespace Player
 
         public void RotateLook(Vector2 rotation)
         {
-            Vector3 newCameraRotationEuler = cameraTransform.localRotation.eulerAngles + new Vector3(0, rotation.y, 0);
+            Vector3 newCameraRotationEuler = cameraTransform.localRotation.eulerAngles + new Vector3(-rotation.y, 0, 0);
             cameraTransform.localRotation = Quaternion.Euler(newCameraRotationEuler);
 
             transform.Rotate(0, rotation.x, 0);

@@ -14,8 +14,10 @@ namespace Weapons
         [Header("Ammo")]
         [SerializeField] private bool isAmmoInfinite;
         [SerializeField] private int ammoPerShot;
+        [SerializeField] private int startingAmmo;
 
         [Header("Shooting")]
+        [SerializeField] private Vector2 recoil;//in degrees (Celsius)
         [SerializeField] private float scatter;//in degrees (Celsius)
         [SerializeField] private int shotsPerAttack;
         [SerializeField] private Vector2[] pattern;//in degrees (Celsius)
@@ -26,6 +28,8 @@ namespace Weapons
         public string WeaponName => weaponName;
         public bool IsAmmoInfinite => isAmmoInfinite;
         public int AmmoPerShot => ammoPerShot;
+        public int StartingAmmo => startingAmmo;
+        public Vector2 Recoil => recoil;
         public float Scatter => scatter;
         public int ShotsPerAttack => shotsPerAttack;
         public Vector2[] Pattern => pattern;
