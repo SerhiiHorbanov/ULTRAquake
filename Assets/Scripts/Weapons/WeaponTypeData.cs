@@ -13,6 +13,7 @@ namespace Weapons
 
         [Header("Ammo")]
         [SerializeField] private bool isAmmoInfinite;
+        [SerializeField] private AmmoTypes ammoType;
         [SerializeField] private int ammoPerShot;
         [SerializeField] private int startingAmmo;
 
@@ -27,6 +28,7 @@ namespace Weapons
 
         public string WeaponName => weaponName;
         public bool IsAmmoInfinite => isAmmoInfinite;
+        public AmmoTypes AmmoType => ammoType;
         public int AmmoPerShot => ammoPerShot;
         public int StartingAmmo => startingAmmo;
         public Vector2 Recoil => recoil;
