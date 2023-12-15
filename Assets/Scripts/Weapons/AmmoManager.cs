@@ -25,6 +25,25 @@ public class AmmoManager : MonoBehaviour
             ammo.Add(type, clampedAmmoAmount);
     }
 
+    public bool UseAmmo(AmmoTypes type, int amount)
+    {
+        int maxAmmo = GetMaxAmmo(type);
+        if (maxAmmo < amount)
+            return false;
+
+        int clampedAmmoAmount = Mathf.Clamp(amount, 0, maxAmmo);
+
+        if (ammo == null)
+            ammo = new SerializableDictionary<AmmoTypes, int>() { { type, clampedAmmoAmount } };
+
+        if (!ammo.ContainsKey(type))
+            ammo.Add(type, clampedAmmoAmount);
+        else
+            ammo[type] = Mathf.Clamp(ammo[type] + amount, 0, maxAmmo);
+
+        return true;
+    }
+
     public int GetAmmo(AmmoTypes type)
     {
         if (ammo == null)
