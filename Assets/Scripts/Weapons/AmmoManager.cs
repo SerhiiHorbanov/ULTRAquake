@@ -17,11 +17,11 @@ public class AmmoManager : MonoBehaviour
 
     private void Awake()
     {
+        for (int i = 0; i < maxAmmoKeysArray.Length; i++)
+            SetMaxAmmo(maxAmmoKeysArray[i], maxAmmoValuesArray[i]);
+
         for (int i = 0; i < ammoKeysArray.Length; i++)
             AddAmmo(ammoKeysArray[i], ammoValuesArray[i]);
-
-        for (int i = 0; i < maxAmmoKeysArray.Length; i++)
-            AddAmmo(maxAmmoKeysArray[i], maxAmmoValuesArray[i]);
     }
 
     public void AddAmmo(AmmoTypes type, int amount)
