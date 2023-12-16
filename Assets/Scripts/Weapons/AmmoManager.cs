@@ -1,19 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Weapons;
 
 public class AmmoManager : MonoBehaviour
 {
-    [SerializeField] SerializableDictionary<AmmoTypes, int> ammo;
-    [SerializeField] SerializableDictionary<AmmoTypes, int> maxAmmo;
+    [SerializeField] AmmoTypes[] ammoKeysArray;
+    [SerializeField] int[] ammoValuesArray;
+
+    [SerializeField] AmmoTypes[] maxAmmoKeysArray;
+    [SerializeField] int[] maxAmmoValuesArray;
+
+    public Dictionary<AmmoTypes, int> ammo;
+    public Dictionary<AmmoTypes, int> maxAmmo;
+
+    private void Awake()
+    {
+        for (int i = 0; i < ammoKeysArray.Length; i++)
+            ammo.Add(ammoKeysArray[i], ammoValuesArray[i]);
+
+        for (int i = 0; i < maxAmmoKeysArray.Length; i++)
+            maxAmmo.Add(maxAmmoKeysArray[i], maxAmmoValuesArray[i]);
+    }
 
     public void AddAmmo(AmmoTypes type, int amount)
     {
         int clampedAmmoAmount = Mathf.Clamp(amount, 0, GetMaxAmmo(type));
 
         if (ammo == null)
+        {
             ammo = new SerializableDictionary<AmmoTypes, int>() { { type, clampedAmmoAmount } };
+            return;
+        }
 
         else if (ammo.ContainsKey(type))
         {
@@ -25,23 +44,14 @@ public class AmmoManager : MonoBehaviour
             ammo.Add(type, clampedAmmoAmount);
     }
 
-    public bool UseAmmo(AmmoTypes type, int amount)
+    public bool TryUseAmmo(AmmoTypes type, int amount)
     {
-        int maxAmmo = GetMaxAmmo(type);
-        if (maxAmmo < amount)
-            return false;
+        bool isEnoughAmmo = GetAmmo(type) >= amount;
 
-        int clampedAmmoAmount = Mathf.Clamp(amount, 0, maxAmmo);
+        if (isEnoughAmmo)
+            ammo[type] -= amount;
 
-        if (ammo == null)
-            ammo = new SerializableDictionary<AmmoTypes, int>() { { type, clampedAmmoAmount } };
-
-        if (!ammo.ContainsKey(type))
-            ammo.Add(type, clampedAmmoAmount);
-        else
-            ammo[type] = Mathf.Clamp(ammo[type] + amount, 0, maxAmmo);
-
-        return true;
+        return isEnoughAmmo;
     }
 
     public int GetAmmo(AmmoTypes type)
@@ -53,7 +63,7 @@ public class AmmoManager : MonoBehaviour
             return ammo[type];
 
         else
-            ammo = new SerializableDictionary<AmmoTypes, int>() { { type, 0 } };
+            ammo.Add(type, 0);
 
         return 0;
     }
@@ -61,11 +71,26 @@ public class AmmoManager : MonoBehaviour
     public int GetMaxAmmo(AmmoTypes type)
     {
         if (maxAmmo == null)
-            return 0;
+            maxAmmo = new SerializableDictionary<AmmoTypes, int>() { { type, 0 } };
 
-        if (maxAmmo.ContainsKey(type))
+        else if (maxAmmo.ContainsKey(type))
             return maxAmmo[type];
 
+        else
+            maxAmmo.Add(type, 0);
+
         return 0;
+    }
+
+    public void SetMaxAmmo(AmmoTypes type, int amount)
+    {
+        if (maxAmmo == null)
+            maxAmmo = new SerializableDictionary<AmmoTypes, int>() { { type, amount } };
+
+        else if (maxAmmo.ContainsKey(type))
+            maxAmmo[type] = amount;
+
+        else
+            maxAmmo.Add(type, amount);
     }
 }
