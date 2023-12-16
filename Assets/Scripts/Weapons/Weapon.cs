@@ -7,29 +7,32 @@ namespace Weapons
     [Serializable]
     public class Weapon
     {
-        [SerializeField] private WeaponTypeData weaponTypeData;
+        [SerializeField] private WeaponTypeData typeData;
         [SerializeField] private GameObject owner;
         [SerializeField] private Vector3 offset;
+
+        public WeaponTypeData TypeData
+            => typeData;
 
         const float raycastMaxDistance = 100;
 
         public Weapon(WeaponTypeData weaponTypeData, GameObject owner)
         {
-            this.weaponTypeData = weaponTypeData;
+            this.typeData = weaponTypeData;
             this.owner = owner;
         }
 
         public bool TryAttack(Vector3 eulerAngle, AmmoManager ammoManager)
         {
-            bool ableToAttack = ammoManager.GetAmmo(weaponTypeData.AmmoType) >= weaponTypeData.AmmoPerShot;
-            ableToAttack |= weaponTypeData.IsAmmoInfinite;
+            bool ableToAttack = ammoManager.GetAmmo(typeData.AmmoType) >= typeData.AmmoPerShot;
+            ableToAttack |= typeData.IsAmmoInfinite;
 
             if (ableToAttack)
             {
                 Attack(eulerAngle);
 
-                if (!weaponTypeData.IsAmmoInfinite)
-                    ammoManager.TryUseAmmo(weaponTypeData.AmmoType, weaponTypeData.AmmoPerShot);
+                if (!typeData.IsAmmoInfinite)
+                    ammoManager.TryUseAmmo(typeData.AmmoType, typeData.AmmoPerShot);
             }
 
             return ableToAttack;
@@ -37,14 +40,14 @@ namespace Weapons
 
         private void Attack(Vector3 eulerAngle)
         {
-            for (int i = 0; i < weaponTypeData.ShotsPerAttack; i++)
+            for (int i = 0; i < typeData.ShotsPerAttack; i++)
             {
-                float scatterX = UnityEngine.Random.Range(-weaponTypeData.Scatter, weaponTypeData.Scatter);
-                float scatterY = UnityEngine.Random.Range(-weaponTypeData.Scatter, weaponTypeData.Scatter);
+                float scatterX = UnityEngine.Random.Range(-typeData.Scatter, typeData.Scatter);
+                float scatterY = UnityEngine.Random.Range(-typeData.Scatter, typeData.Scatter);
 
                 Vector3 scatteredEulerAngle = eulerAngle + new Vector3(scatterX, scatterY, 0);
                 
-                foreach (Vector2 patternShot in weaponTypeData.Pattern)
+                foreach (Vector2 patternShot in typeData.Pattern)
                 {
                     Vector3 shootEulerAngle = scatteredEulerAngle + (Vector3)patternShot;
                     Shoot(shootEulerAngle);
@@ -64,7 +67,7 @@ namespace Weapons
 
             IDamageable damageable = hit.collider.GetComponent<IDamageable>();
             if (damageable != null)
-                damageable.ApplyDamage(weaponTypeData.Damage);
+                damageable.ApplyDamage(typeData.Damage);
         }
     }
 }
