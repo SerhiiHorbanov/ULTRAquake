@@ -73,7 +73,6 @@ namespace Weapons
                 return;
 
             ChooseWeapon(currentWeaponIndex + 1);
-            Debug.Log(currentWeaponIndex);
         }
 
         public void PrevWeapon(InputAction.CallbackContext context)
@@ -81,7 +80,6 @@ namespace Weapons
             if (context.phase != InputActionPhase.Started)
                 return;
             ChooseWeapon(currentWeaponIndex - 1);
-            Debug.Log(currentWeaponIndex);
         }
     }
 }
