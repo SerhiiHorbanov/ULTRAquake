@@ -219,6 +219,7 @@ MonoBehaviour:
     owner: {fileID: 3026256219922378897}
     offset: {x: 0, y: 0, z: 0}
   ammo: {fileID: 6447260556574853940}
+  aimFrom: {fileID: 3026256219975293581}
 --- !u!114 &3026256219922378899
 MonoBehaviour:
   m_ObjectHideFlags: 0

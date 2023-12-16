@@ -9,6 +9,7 @@ namespace Weapons
     {
         [SerializeField] private List<Weapon> weapons;
         [SerializeField] private AmmoManager ammo;
+        [SerializeField] private Transform aimFrom;
         private Weapon currentWeapon;
         private int currentWeaponIndex;
 
