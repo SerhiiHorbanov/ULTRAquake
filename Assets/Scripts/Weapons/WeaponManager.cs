@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Weapons
 {
@@ -9,7 +10,6 @@ namespace Weapons
     {
         [SerializeField] private List<Weapon> weapons;
         [SerializeField] private AmmoManager ammo;
-        [SerializeField] private Transform aimFrom;
         private Weapon currentWeapon;
         private int currentWeaponIndex;
 
@@ -19,14 +19,17 @@ namespace Weapons
         public void ChooseWeapon(int index)
         {
             if (index < 0)
-                index = weapons.Count - index;
+                index = weapons.Count + index;
 
-            currentWeaponIndex = weapons.Count % index;
+            currentWeaponIndex = index % weapons.Count;
             currentWeapon = weapons[currentWeaponIndex];
         }
 
         public void Attack()
-            => currentWeapon.TryAttack(transform.rotation.eulerAngles, ammo);
+        {
+            if (currentWeapon != null)
+                currentWeapon.TryAttack(transform.rotation.eulerAngles, ammo);
+        }
 
         public int IndexOfWeaponWithName(string name)
         {
@@ -63,5 +66,22 @@ namespace Weapons
 
         public void AddWeapon(WeaponTypeData typeData)
             => AddWeapon(typeData, Vector3.zero);
+
+        public void NextWeapon(InputAction.CallbackContext context)
+        {
+            if (context.phase != InputActionPhase.Started)
+                return;
+
+            ChooseWeapon(currentWeaponIndex + 1);
+            Debug.Log(currentWeaponIndex);
+        }
+
+        public void PrevWeapon(InputAction.CallbackContext context)
+        {
+            if (context.phase != InputActionPhase.Started)
+                return;
+            ChooseWeapon(currentWeaponIndex - 1);
+            Debug.Log(currentWeaponIndex);
+        }
     }
 }
