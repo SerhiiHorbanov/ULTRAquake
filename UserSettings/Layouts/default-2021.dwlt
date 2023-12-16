@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 869.3334
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 102
+  controlID: 27
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 55
+  controlID: 61
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 46
+  controlID: 18
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -346,23 +346,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Graphics/Materials
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Graphics/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\StasK\OneDrive\GameDev\Git projects\SR\ULTRAquake
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 299}
-    m_SelectedIDs: e6510000
-    m_LastClickedID: 20966
-    m_ExpandedIDs: 00000000485100004a5100004c5100004e51000050510000525100005451000056510000585100005a5100005c5100005e51000060510000625100006451000066510000685100006a5100006c5100006e51000070510000725100007451000076510000785100007a5100007c510000ce510000da5100001452000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 824e0000
+    m_LastClickedID: 20098
+    m_ExpandedIDs: 00000000c84d0000ca4d0000cc4d0000ce4d0000d04d0000d24d0000d44d0000d64d0000d84d0000da4d0000dc4d0000de4d0000e04d0000e24d0000e44d0000e64d0000e84d0000ea4d0000ec4d0000ee4d0000f04d0000f24d0000f44d0000f64d0000f84d0000fa4d0000fc4d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -390,7 +390,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000485100004a5100004c5100004e51000050510000525100005451000056510000585100005a5100005c5100005e51000060510000625100006451000066510000685100006a5100006c5100006e51000070510000725100007451000076510000785100007a5100007c510000
+    m_ExpandedIDs: 00000000c84d0000ca4d0000cc4d0000ce4d0000d04d0000d24d0000d44d0000d64d0000d84d0000da4d0000dc4d0000de4d0000e04d0000e24d0000e44d0000e64d0000e84d0000ea4d0000ec4d0000ee4d0000f04d0000f24d0000f44d0000f64d0000f84d0000fa4d0000fc4d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -482,7 +482,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 108
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -520,9 +520,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 8c5b0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: eeb2ffff2cfbffff0c4d0000704d0000804d0000
+      m_SelectedIDs: de4c0000
+      m_LastClickedID: 19678
+      m_ExpandedIDs: 3292ffff9ac4ffff32fbffff34fbfffff44c00002a4d0000384d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -805,9 +805,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -6.627436, y: -1.4156036, z: 10.886473}
+    m_Target: {x: -7.1176453, y: -2.2355025, z: 7.9218817}
     speed: 2
-    m_Value: {x: -6.627436, y: -1.4156036, z: 10.886473}
+    m_Value: {x: -7.1176453, y: -2.2355025, z: 7.9218817}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -849,18 +849,18 @@ MonoBehaviour:
         m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0, y: 0}
+      m_Size: {x: 1, y: 1}
     m_ShowGrid: 1
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.21126662, y: -0.68325484, z: 0.22062838, w: 0.66376853}
+    m_Target: {x: 0.07127307, y: -0.9070213, z: 0.1796916, w: 0.37562758}
     speed: 2
-    m_Value: {x: 0.21019414, y: -0.68333375, z: 0.21952175, w: 0.6638401}
+    m_Value: {x: 0.071232036, y: -0.906499, z: 0.17958812, w: 0.3754113}
   m_Size:
-    m_Target: 5.3112884
+    m_Target: 12.124355
     speed: 2
-    m_Value: 5.3112884
+    m_Value: 12.124355
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -878,7 +878,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0, y: 0, z: 0, w: 0}
+  m_LastSceneViewRotation: {x: -0.31046733, y: 0.64149964, z: -0.32176995, w: -0.62412935}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
