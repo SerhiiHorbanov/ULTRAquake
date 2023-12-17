@@ -9,6 +9,7 @@ namespace HealthAndDamage
     public class Health : MonoBehaviour, IDamageable
     {
         [SerializeField] public float health;
+        [SerializeField] private float maxHealth;
 
         [Tooltip("actions that will be performed when player should die")]
         [SerializeField] private UnityEvent<Damage> OnDeath;
@@ -30,11 +31,19 @@ namespace HealthAndDamage
                     damageToDeal *= damageTypeMultipliers[damage.type];
 
             health -= damageToDeal;
+
+            if (health <= 0)
+                OnDeath.Invoke(damage);
         }
 
         public void Heal(float healValue)
         {
             health += healValue;
+        }
+
+        public void DestroyObject()
+        {
+            Destroy(gameObject);
         }
     }
 }
