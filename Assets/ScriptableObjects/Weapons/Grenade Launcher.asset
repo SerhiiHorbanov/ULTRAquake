@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25ab5422814aa54ca1be9c80d4b484a, type: 3}
   m_Name: Grenade Launcher
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponName: grenade launcher
   isAmmoInfinite: 0
-  ammoType: 0
-  ammoPerShot: 0
-  startingAmmo: 0
-  recoil: {x: 0, y: 0}
+  ammoType: 3
+  ammoPerShot: 1
+  startingAmmo: 5
+  recoil: {x: 0, y: 2}
   scatter: 0
-  shotsPerAttack: 0
-  pattern: []
+  shotsPerAttack: 1
+  pattern:
+  - {x: 0, y: 0}
   damage:
     damageValue: 0
     type: 0
   weaponVisualsPrefab: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  projectileSpeed: 0
