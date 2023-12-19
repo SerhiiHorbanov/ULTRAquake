@@ -8,5 +8,6 @@ namespace Weapons
         None,
         Bullet,
         ShotgunShell,
+        Explosive,
     }
 }
