@@ -8,6 +8,5 @@ namespace Weapons
     public class ProjectileBasedWeaponTypeData : WeaponTypeData
     {
         public GameObject projectilePrefab;
-        public float projectileSpeed;
     }
 }
