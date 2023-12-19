@@ -1,6 +1,7 @@
 using HealthAndDamage;
 using System;
 using UnityEngine;
+using Weapons.Ammo;
 
 namespace Weapons
 {
