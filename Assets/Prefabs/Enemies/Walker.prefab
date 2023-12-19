@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6612803552121031099}
   - component: {fileID: 1836288475149364149}
   - component: {fileID: 1836288475149364144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
