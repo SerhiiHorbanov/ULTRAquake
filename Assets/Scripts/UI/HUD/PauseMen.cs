@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMen : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PauseMen : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             if (isPause)
             {
                 Resume();
@@ -35,10 +38,20 @@ public class PauseMen : MonoBehaviour
         isPause = false;
     }
 
-    public void Pause()
+    public void Options()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    void Pause()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         isPause = true;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
