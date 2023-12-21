@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 3026256219922378898}
   - component: {fileID: 6447260556574853940}
   - component: {fileID: 8455518346717145185}
+  - component: {fileID: 614955590847859223}
   - component: {fileID: 3026256219922378899}
   - component: {fileID: 3026256219922378896}
   m_Layer: 3
@@ -219,7 +220,38 @@ MonoBehaviour:
     owner: {fileID: 3026256219922378897}
     offset: {x: 0, y: 0, z: 0}
   ammo: {fileID: 6447260556574853940}
-  aimFrom: {fileID: 3026256219975293581}
+--- !u!114 &614955590847859223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026256219922378897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08364032fddc5d41a66165799d6058a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 614955590847859223}
+        m_TargetAssemblyTypeName: HealthAndDamage.Health, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3026256219922378899
 MonoBehaviour:
   m_ObjectHideFlags: 0
