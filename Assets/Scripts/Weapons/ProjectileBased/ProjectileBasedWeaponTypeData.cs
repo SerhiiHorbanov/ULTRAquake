@@ -9,5 +9,8 @@ namespace Weapons.ProjectileBased
     public class ProjectileBasedWeaponTypeData : WeaponTypeData
     {
         public GameObject projectilePrefab;
+        public bool addOwnersVelocity;
+        public Vector3 absoluteForceToAdd;
+        public Vector3 forceToAdd;
     }
 }
