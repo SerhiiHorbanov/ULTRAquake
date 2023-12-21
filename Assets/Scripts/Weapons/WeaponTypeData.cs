@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Weapons.Ammo;
+
 namespace Weapons
 {
     [CreateAssetMenu()]
