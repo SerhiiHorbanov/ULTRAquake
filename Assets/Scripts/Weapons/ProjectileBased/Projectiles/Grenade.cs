@@ -7,39 +7,44 @@ namespace Weapons.ProjectileBased.Projectiles
 {
     public class Grenade : MonoBehaviour
     {
-        [SerializeField] private int explosionRadius;
-        [SerializeField] private int explosionPower;
+        [SerializeField] private float explosionRadius;
+        [SerializeField] private float explosionPower;
         [SerializeField] private Projectile projectileComponent;
-
-        private void Awake()
-        {
-            
-        }
 
         private void Explode()
         {
             Collider[] affectedByExplosion = Physics.OverlapSphere(transform.position, explosionRadius);
+
             foreach (Collider collider in affectedByExplosion)
             {
                 Rigidbody affectedRigidBody = collider.GetComponent<Rigidbody>();
-                IDamageable iDamageable = collider.GetComponent<IDamageable>();
+                IDamageable damageable = collider.GetComponent<IDamageable>();
+
+                Vector3 closestPoint = collider.ClosestPoint(transform.position);
+                Vector3 affectedObjectRelativePosition = closestPoint - transform.position;
 
                 if (affectedRigidBody != null)
-                    AddExplosionForce(affectedRigidBody, collider);
+                    AddExplosionForce(affectedRigidBody, affectedObjectRelativePosition);
 
-                if (iDamageable != null)
-                    iDamageable.ApplyDamage(projectileComponent.damage);
+                if (damageable != null)
+                    ExplosionDamage(damageable, affectedObjectRelativePosition.magnitude);
             }
         }
 
-        private void AddExplosionForce(Rigidbody rigidbody, Collider collider)
+        private void ExplosionDamage(IDamageable damageable, float distanceToObject)
         {
-            Vector3 affectedObjectRelativePosition = collider.ClosestPoint(transform.position) - transform.position;
+            Damage damageToApply = projectileComponent.damage / (distanceToObject + 1);
+
+            damageable.ApplyDamage(damageToApply);
+        }
+
+        private void AddExplosionForce(Rigidbody rigidbody, Vector3 affectedObjectRelativePosition)
+        {
             Vector3 direction = affectedObjectRelativePosition.normalized;
 
-            float forceMagnitude = 1f / (affectedObjectRelativePosition.magnitude + 1);
+            float forceMagnitude = explosionPower / (affectedObjectRelativePosition.magnitude + 1);
 
-            rigidbody.AddForce(direction * forceMagnitude);
+            rigidbody.velocity += (direction * forceMagnitude);
         }
 
         private void OnDestroy()
@@ -49,7 +54,7 @@ namespace Weapons.ProjectileBased.Projectiles
 
         private void OnTriggerEnter(Collider collider)
         {
-            if (collider.GetComponent<Health>() != null)
+            if (collider.GetComponent<IDamageable>() != null)
                 Destroy(gameObject);
         }
     }
