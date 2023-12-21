@@ -58,15 +58,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925104327681503448, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3925104327681503448, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.69
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3925104327681503448, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3925104327681503448, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -96,9 +96,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3925104327681503449, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
+      propertyPath: timeBeforeDestroy
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3925104327681503450, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
       propertyPath: m_Name
       value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 3925104327681503450, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
@@ -107,6 +115,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3925104327681503448, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
   m_PrefabInstance: {fileID: 7888093749575671424}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6557494975643397721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3925104327681503449, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
+  m_PrefabInstance: {fileID: 7888093749575671424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557494975643397722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6681d72785c3f4aab6dd5c78c25074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6557494975643397722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3925104327681503450, guid: 8a7b8bf23c41c504d8a0f15f372c220d, type: 3}
@@ -203,3 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5721255e8a4a1054a8e7c52b821db16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionRadius: 2
+  explosionPower: 20
+  projectileComponent: {fileID: 6557494975643397721}
