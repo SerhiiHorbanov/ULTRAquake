@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3026256219922378900}
   - component: {fileID: 3026256219922378901}
   - component: {fileID: 3026256219922378898}
-  - component: {fileID: 6447260556574853940}
+  - component: {fileID: 616851513579838290}
   - component: {fileID: 8455518346717145185}
   - component: {fileID: 614955590847859223}
   - component: {fileID: 3026256219922378899}
@@ -187,7 +187,7 @@ MonoBehaviour:
   rigidBody: {fileID: 3026256219922378902}
   jumpSpeed: 6
   isJumping: 0
---- !u!114 &6447260556574853940
+--- !u!114 &616851513579838290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,10 +199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977d17d48736b44872b8a853a5f23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoKeysArray: 0200000001000000
-  ammoValuesArray: 6400000064000000
-  maxAmmoKeysArray: 0200000001000000
-  maxAmmoValuesArray: 6400000064000000
+  ammoKeysArray: 010000000200000003000000
+  ammoValuesArray: 640000006400000064000000
+  maxAmmoKeysArray: 010000000200000003000000
+  maxAmmoValuesArray: 640000006400000064000000
 --- !u!114 &8455518346717145185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   - typeData: {fileID: 11400000, guid: 0fc241817b59f7942a2961d5e17987c6, type: 2}
     owner: {fileID: 3026256219922378897}
     offset: {x: 0, y: 0, z: 0}
-  ammo: {fileID: 6447260556574853940}
+  ammo: {fileID: 616851513579838290}
 --- !u!114 &614955590847859223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +340,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 82f18994-b8d5-43b8-b58b-59285e24f5f3
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8455518346717145185}
+        m_TargetAssemblyTypeName: Weapons.WeaponManager, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a3a67714-a110-43cc-87ac-a493dc447b5d
+    m_ActionName: Player/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8455518346717145185}
+        m_TargetAssemblyTypeName: Weapons.WeaponManager, Assembly-CSharp
+        m_MethodName: NextWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c518b302-0c10-4fc9-8567-e2e25b53db3c
+    m_ActionName: Player/NextWeapon[/Mouse/scroll/up]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8455518346717145185}
+        m_TargetAssemblyTypeName: Weapons.WeaponManager, Assembly-CSharp
+        m_MethodName: PrevWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e878f8d8-1177-4a5f-b8c8-3dc50c20ceed
+    m_ActionName: Player/PrevWeapon[/Mouse/scroll/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -366,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6452077348303421669, guid: 50c18dec1a1c1aa4f923e91125505888, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6452077348303421669, guid: 50c18dec1a1c1aa4f923e91125505888, type: 3}
       propertyPath: m_LocalPosition.z
