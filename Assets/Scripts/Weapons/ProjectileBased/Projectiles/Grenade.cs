@@ -54,6 +54,9 @@ namespace Weapons.ProjectileBased.Projectiles
 
         private void OnTriggerEnter(Collider collider)
         {
+            if (collider.gameObject == projectileComponent.owner)
+                return;
+
             if (collider.GetComponent<IDamageable>() != null)
                 Destroy(gameObject);
         }
