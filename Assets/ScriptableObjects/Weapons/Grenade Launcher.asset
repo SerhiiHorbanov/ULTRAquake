@@ -28,5 +28,5 @@ MonoBehaviour:
   weaponVisualsPrefab: {fileID: 0}
   projectilePrefab: {fileID: 6557494975643397722, guid: 2926eb5753c2b4a4bb4ebd55fb6a9420, type: 3}
   addOwnersVelocity: 0
-  absoluteForceToAdd: {x: 0, y: 0.5, z: 0}
-  forceToAdd: {x: 0, y: 0, z: 5}
+  absoluteForceToAdd: {x: 0, y: 5, z: 0}
+  forceToAdd: {x: 0, y: 0, z: 15}
