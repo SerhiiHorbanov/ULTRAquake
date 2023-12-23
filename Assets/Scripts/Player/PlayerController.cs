@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Player.Movement;
+using Weapons;
 
 namespace Player
 {
@@ -9,6 +10,7 @@ namespace Player
         [SerializeField] Jump jump;
         [SerializeField] Walk walk;
         [SerializeField] PlayerCamera look;
+        [SerializeField] WeaponManager weaponManager;
 
         Vector2 walkDirection = Vector2.zero;
 
@@ -30,6 +32,12 @@ namespace Player
         public void RotateLook(InputAction.CallbackContext context)
         {
             look.MouseLook(context.ReadValue<Vector2>());
+        }
+
+        public void TryAttack(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+                weaponManager.Attack();
         }
     }
 }
