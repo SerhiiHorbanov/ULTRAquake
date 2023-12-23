@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Weapons.Ammo;
+using Weapons.ProjectileBased;
 
 namespace Weapons
 {
@@ -13,6 +14,16 @@ namespace Weapons
         [SerializeField] private AmmoManager ammo;
         private Weapon currentWeapon;
         private int currentWeaponIndex;
+
+        private void Awake()
+        {
+            for (int i = 0; i < weapons.Count; i++)
+            {
+                Weapon weapon = weapons[i];
+                if (weapon.TypeData is ProjectileBasedWeaponTypeData)
+                    weapons[i] = new ProjectileBasedWeapon((ProjectileBasedWeaponTypeData)weapon.TypeData, gameObject, weapon.Offset);
+            }
+        }
 
         public void ChooseWeapon(string name)
             => ChooseWeapon(IndexOfWeaponWithName(name));
@@ -64,6 +75,9 @@ namespace Weapons
 
             Weapon weaponToAdd;
 
+            if (typeData is ProjectileBasedWeaponTypeData)
+                weaponToAdd = new ProjectileBasedWeapon((ProjectileBasedWeaponTypeData)typeData, gameObject, offset);
+            else
                 weaponToAdd = new Weapon(typeData, gameObject, offset);
 
             weapons.Add(weaponToAdd);
