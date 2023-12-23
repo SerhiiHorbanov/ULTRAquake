@@ -26,6 +26,9 @@ namespace Weapons
         [SerializeField] private Vector2[] pattern;//in degrees (Celsius)
         [SerializeField] private Damage damage;
 
+        [Header("Other")]
+        [SerializeField] private int weaponRaisingTime;//in FixedUpdate frames
+        [SerializeField] private int timeBetweenShots;//in FixedUpdate frames
         [SerializeField] private GameObject weaponVisualsPrefab;
 
         public string WeaponName => weaponName;
@@ -38,6 +41,8 @@ namespace Weapons
         public int ShotsPerAttack => shotsPerAttack;
         public Vector2[] Pattern => pattern;
         public Damage Damage => damage;
+        public int WeaponRaisingTime => weaponRaisingTime;
+        public int TimeBetweenShots => timeBetweenShots;
         public GameObject WeaponVisualsPrefab => weaponVisualsPrefab;
     }
 }

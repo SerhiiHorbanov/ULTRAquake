@@ -14,6 +14,7 @@ namespace Weapons
         [SerializeField] private AmmoManager ammo;
         private Weapon currentWeapon;
         private int currentWeaponIndex;
+        private int timeBeforeAbleToShoot;
 
         private void Awake()
         {
@@ -23,6 +24,11 @@ namespace Weapons
                 if (weapon.TypeData is ProjectileBasedWeaponTypeData)
                     weapons[i] = new ProjectileBasedWeapon((ProjectileBasedWeaponTypeData)weapon.TypeData, gameObject, weapon.Offset);
             }
+        }
+
+        private void FixedUpdate()
+        {
+            timeBeforeAbleToShoot--;
         }
 
         public void ChooseWeapon(string name)
@@ -35,12 +41,20 @@ namespace Weapons
 
             currentWeaponIndex = index % weapons.Count;
             currentWeapon = weapons[currentWeaponIndex];
+
+            timeBeforeAbleToShoot = currentWeapon.TypeData.WeaponRaisingTime;
         }
 
         public void Attack()
         {
-            if (currentWeapon != null)
-                currentWeapon.TryAttack(transform.rotation.eulerAngles, ammo);
+            if (currentWeapon == null)
+                return;
+
+            if (timeBeforeAbleToShoot > 0)
+                return;
+
+            if (currentWeapon.TryAttack(transform.rotation.eulerAngles, ammo))
+                timeBeforeAbleToShoot = currentWeapon.TypeData.TimeBetweenShots;
         }
 
         public int IndexOfWeaponWithName(string name)
