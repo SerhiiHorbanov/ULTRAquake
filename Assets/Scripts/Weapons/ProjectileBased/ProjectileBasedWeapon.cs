@@ -17,9 +17,6 @@ namespace Weapons.ProjectileBased
 
         public override void Shoot(Vector3 eulerAngle)
         {
-            Debug.Log("projectile shooting");
-            Debug.Log(Offset);
-
             GameObject prefab = projectileBasedTypeData.projectilePrefab;
             Vector3 position = Owner.transform.position + Offset;
             Quaternion rotation = Owner.transform.rotation;
