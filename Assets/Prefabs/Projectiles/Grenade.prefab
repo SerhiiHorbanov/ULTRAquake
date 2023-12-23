@@ -222,6 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5721255e8a4a1054a8e7c52b821db16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 2
+  explosionRadius: 4
   explosionPower: 20
   projectileComponent: {fileID: 6557494975643397721}
