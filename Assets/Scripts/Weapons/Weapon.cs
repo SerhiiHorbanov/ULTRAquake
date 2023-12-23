@@ -12,15 +12,22 @@ namespace Weapons
         [SerializeField] private GameObject owner;
         [SerializeField] private Vector3 offset;
 
+
         public WeaponTypeData TypeData
             => typeData;
+        public GameObject Owner
+            => owner;
+        public Vector3 Offset
+            => offset;
+
 
         const float raycastMaxDistance = 100;
 
-        public Weapon(WeaponTypeData weaponTypeData, GameObject owner)
+        public Weapon(WeaponTypeData weaponTypeData, GameObject owner, Vector3 offset)
         {
             this.typeData = weaponTypeData;
             this.owner = owner;
+            this.offset = offset;
         }
 
         public bool TryAttack(Vector3 eulerAngle, AmmoManager ammoManager)

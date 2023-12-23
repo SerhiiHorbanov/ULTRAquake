@@ -62,7 +62,11 @@ namespace Weapons
                 }
             }
 
-            weapons.Add(new Weapon(typeData, gameObject));
+            Weapon weaponToAdd;
+
+                weaponToAdd = new Weapon(typeData, gameObject, offset);
+
+            weapons.Add(weaponToAdd);
         }
 
         public void AddWeapon(WeaponTypeData typeData)
