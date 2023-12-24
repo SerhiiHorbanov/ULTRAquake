@@ -14,27 +14,27 @@ namespace Player
 
         Vector2 walkDirection = Vector2.zero;
 
-        public void ChangeWalkDirection(InputAction.CallbackContext context)
+        public virtual void ChangeWalkDirection(InputAction.CallbackContext context)
         {
             walkDirection = context.ReadValue<Vector2>();
         }
 
-        private void FixedUpdate()
+        public virtual void FixedUpdate()
         {
             walk.SetRelativeWalkDirection(walkDirection);
         }
 
-        public void TryStartJump(InputAction.CallbackContext context)
+        public virtual void TryStartJump(InputAction.CallbackContext context)
         {
             jump.isJumping = context.phase.IsInProgress();
         }
 
-        public void RotateLook(InputAction.CallbackContext context)
+        public virtual void RotateLook(InputAction.CallbackContext context)
         {
             look.MouseLook(context.ReadValue<Vector2>());
         }
 
-        public void TryAttack(InputAction.CallbackContext context)
+        public virtual void TryAttack(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Started)
                 weaponManager.Attack();
