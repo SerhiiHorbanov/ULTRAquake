@@ -25,6 +25,8 @@ MonoBehaviour:
   damage:
     damageValue: 90
     type: 2
+  weaponRaisingTime: 30
+  timeBetweenShots: 30
   weaponVisualsPrefab: {fileID: 0}
   projectilePrefab: {fileID: 6557494975643397722, guid: 2926eb5753c2b4a4bb4ebd55fb6a9420, type: 3}
   addOwnersVelocity: 0
