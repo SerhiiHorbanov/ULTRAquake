@@ -38,11 +38,6 @@ public class PauseMen : MonoBehaviour
         isPause = false;
     }
 
-    public void Options()
-    {
-        SceneManager.LoadScene(1);
-    }
-
     void Pause()
     {
         pauseMenu.SetActive(true);
