@@ -37,7 +37,12 @@ namespace Player
         public virtual void TryAttack(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Started)
-                weaponManager.Attack();
+                TryAttack();
+        }
+
+        public void TryAttack()
+        {
+            weaponManager.Attack();
         }
     }
 }
