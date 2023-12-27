@@ -6,6 +6,6 @@ namespace HealthAndDamage
 {
     public interface IDamageable
     {
-        abstract void ApplyDamage(Damage damage);
+        public abstract void ApplyDamage(Damage damage);
     }
 }
