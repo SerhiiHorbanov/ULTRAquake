@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Weapons.Ammo;
+
 namespace Weapons
 {
     [CreateAssetMenu()]
@@ -13,6 +15,7 @@ namespace Weapons
 
         [Header("Ammo")]
         [SerializeField] private bool isAmmoInfinite;
+        [SerializeField] private AmmoTypes ammoType;
         [SerializeField] private int ammoPerShot;
         [SerializeField] private int startingAmmo;
 
@@ -23,10 +26,14 @@ namespace Weapons
         [SerializeField] private Vector2[] pattern;//in degrees (Celsius)
         [SerializeField] private Damage damage;
 
+        [Header("Other")]
+        [SerializeField] private int weaponRaisingTime;//in FixedUpdate frames
+        [SerializeField] private int timeBetweenShots;//in FixedUpdate frames
         [SerializeField] private GameObject weaponVisualsPrefab;
 
         public string WeaponName => weaponName;
         public bool IsAmmoInfinite => isAmmoInfinite;
+        public AmmoTypes AmmoType => ammoType;
         public int AmmoPerShot => ammoPerShot;
         public int StartingAmmo => startingAmmo;
         public Vector2 Recoil => recoil;
@@ -34,6 +41,8 @@ namespace Weapons
         public int ShotsPerAttack => shotsPerAttack;
         public Vector2[] Pattern => pattern;
         public Damage Damage => damage;
+        public int WeaponRaisingTime => weaponRaisingTime;
+        public int TimeBetweenShots => timeBetweenShots;
         public GameObject WeaponVisualsPrefab => weaponVisualsPrefab;
     }
 }
