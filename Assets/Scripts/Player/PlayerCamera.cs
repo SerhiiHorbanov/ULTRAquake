@@ -10,10 +10,7 @@ namespace Player
 
         public void MouseLook(Vector2 delta)
             => RotateLook(delta * sensitivity);
-        public void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+
         public void RotateLook(Vector2 rotation)
         {
             Vector3 newCameraRotationEuler = cameraTransform.localRotation.eulerAngles + new Vector3(-rotation.y, 0, 0);

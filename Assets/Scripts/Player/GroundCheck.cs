@@ -29,8 +29,6 @@ namespace Player
                 }
             }
 
-            Debug.Log(collidingWith.Count);
-
             if (collidingWith.Count > 0)//if colliding with anything
             {
                 framesOffGround = 0;

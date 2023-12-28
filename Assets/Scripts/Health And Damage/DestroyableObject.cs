@@ -8,10 +8,10 @@ namespace HealthAndDamage
 {
     public class DestroyableObject : MonoBehaviour, IDamageable
     {
-        [SerializeField] UnityEvent<Damage> OnDamage;
+        [SerializeField] private UnityEvent<Damage> OnDamage;
 
         [Tooltip("types of damage that can destroy that object. if empty, damage of any type will destroy the object")]
-        [SerializeField] List<DamageType> destroyingTypes = new List<DamageType>();
+        [SerializeField] private List<DamageType> destroyingTypes = new List<DamageType>();
 
         public void ApplyDamage(Damage damage)
         {
