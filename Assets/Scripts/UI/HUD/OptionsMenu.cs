@@ -31,9 +31,4 @@ public class OptionsMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("VolumeSet", currentVolume);
     }
-
-    public void Back()
-    {
-        SceneManager.LoadScene(0);
-    }
 }

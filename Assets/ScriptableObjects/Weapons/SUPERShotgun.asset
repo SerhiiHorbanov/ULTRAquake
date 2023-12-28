@@ -10,21 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 261ac7293bbc6254a97ee1fbe45ce185, type: 3}
-  m_Name: ShotGun
+  m_Name: SUPERShotgun
   m_EditorClassIdentifier: 
-  weaponName: shotgun
+  weaponName: SUPERShotgun
   isAmmoInfinite: 0
   ammoType: 2
-  ammoPerShot: 1
-  startingAmmo: 5
-  recoil: {x: 0.5, y: 2}
-  scatter: 4
-  shotsPerAttack: 15
+  ammoPerShot: 3
+  startingAmmo: 12
+  recoil: {x: 1, y: 5}
+  scatter: 10
+  shotsPerAttack: 30
   pattern:
-  - {x: 0, y: 0}
+  - {x: -0.3, y: 0}
+  - {x: -0.3, y: 0.3}
+  - {x: -0.3, y: -0.3}
   damage:
     damageValue: 3
     type: 1
   weaponRaisingTime: 30
-  timeBetweenShots: 30
+  timeBetweenShots: 50
   weaponVisualsPrefab: {fileID: 0}

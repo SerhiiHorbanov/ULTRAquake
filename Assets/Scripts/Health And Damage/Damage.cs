@@ -35,5 +35,8 @@ namespace HealthAndDamage
             damage.damageValue -= subtractor;
             return damage;
         }
+
+        public override string ToString()
+            => $"Damage(damageValue = {damageValue}, type = {type})";
     }
 }
