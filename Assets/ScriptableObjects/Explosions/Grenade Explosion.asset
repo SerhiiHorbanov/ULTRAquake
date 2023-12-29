@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaeeec089d968d94f8755117fc9a0dbf, type: 3}
   m_Name: Grenade Explosion
   m_EditorClassIdentifier: 
-  explosionRadius: 0
-  explosionTime: 0
-  explosionRadiusDamageMultipliers: []
+  explosionRadius: 3
+  explosionTime: 10
+  explosionForce: 20
+  explosionRadiusDamageMultipliers:
+  - radius: 1.5
+    damageMultiplier: 1
+  - radius: 3
+    damageMultiplier: 0.5

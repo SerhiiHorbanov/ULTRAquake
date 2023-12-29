@@ -12,7 +12,9 @@ namespace Weapons.Explosions
         private Damage damage;
 
         private int framesPassed = 0;
-        
+
+        List<Collider> blownColliders = new List<Collider>();
+
         private void FixedUpdate()
         {
             if (explosionData == null)
@@ -35,6 +37,46 @@ namespace Weapons.Explosions
         {
             this.explosionData = explosionData;
             this.damage = damage;
+        }
+
+        private void OnTriggerEnter(Collider collider)
+        {
+            if (blownColliders.Contains(collider))
+                return;
+
+            blownColliders.Add(collider);
+
+            IDamageable damageable = collider.GetComponent<IDamageable>();
+            Rigidbody rigidbody = collider.GetComponent<Rigidbody>();
+
+            if (damageable != null)
+                TryApplyDamage(collider, damageable);
+
+            if (rigidbody != null)
+                TryApplyForce(collider, rigidbody);
+        }
+
+        private void TryApplyDamage(Collider collider, IDamageable damageable)
+        {
+            Vector3 affectedObjectRelativePosition = collider.ClosestPoint(transform.position) - transform.position;
+            
+        }
+
+        private void TryApplyForce(Collider collider, Rigidbody rigidbody)
+        {
+            Vector3 affectedObjectRelativePosition = collider.ClosestPoint(transform.position) - transform.position;//ik this line repeats
+
+            float forceMagnitude = explosionData.ExplosionForce / (affectedObjectRelativePosition.magnitude + 1);
+            Vector3 forceDirection = affectedObjectRelativePosition.normalized;
+
+            if (forceDirection.sqrMagnitude < 0.01f)
+                forceDirection = collider.transform.position - transform.position;
+
+            Debug.Log(forceMagnitude);
+            Debug.Log(forceDirection);
+            Debug.Log(forceDirection * forceMagnitude);
+
+            rigidbody.velocity += forceDirection * forceMagnitude;
         }
     }
 }

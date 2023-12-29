@@ -9,10 +9,12 @@ namespace Weapons.Explosions
     {
         [SerializeField] float explosionRadius;
         [SerializeField] float explosionTime;
+        [SerializeField] float explosionForce;
         [SerializeField] ExplosionRadiusDamageMultiplier[] explosionRadiusDamageMultipliers;
 
         public float ExplosionRadius => explosionRadius;
         public float ExplosionTime => explosionTime;
+        public float ExplosionForce => explosionForce;
         public ExplosionRadiusDamageMultiplier[] ExplosionRadiusDamageMultipliers => explosionRadiusDamageMultipliers;
     }
 }
