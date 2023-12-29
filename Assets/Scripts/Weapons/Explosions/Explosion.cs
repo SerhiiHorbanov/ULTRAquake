@@ -59,7 +59,32 @@ namespace Weapons.Explosions
         private void TryApplyDamage(Collider collider, IDamageable damageable)
         {
             Vector3 affectedObjectRelativePosition = collider.ClosestPoint(transform.position) - transform.position;
-            
+            float distance = affectedObjectRelativePosition.magnitude;
+
+            Damage damageToDeal = damage;
+
+            if (explosionData.ExplosionRadiusDamageMultipliers.Length != 0)
+            {
+                ExplosionRadiusDamageMultiplier currentMultiplier = new ExplosionRadiusDamageMultiplier(int.MaxValue, 1);
+
+                for (int i = 0; i < explosionData.ExplosionRadiusDamageMultipliers.Length; i++)
+                {
+                    ExplosionRadiusDamageMultiplier multiplierToCheck = explosionData.ExplosionRadiusDamageMultipliers[i];
+
+                    bool isRadiusSmaller = multiplierToCheck.radius < currentMultiplier.radius;
+                    bool isRadiusBiggerThanDistance = multiplierToCheck.radius > distance;
+
+                    if (isRadiusSmaller && isRadiusBiggerThanDistance)
+                        currentMultiplier = multiplierToCheck;
+                }
+
+                damageToDeal *= currentMultiplier.damageMultiplier;
+            }
+
+            Debug.Log(distance);
+            Debug.Log(damageToDeal);
+
+            damageable.ApplyDamage(damageToDeal);
         }
 
         private void TryApplyForce(Collider collider, Rigidbody rigidbody)
@@ -71,10 +96,6 @@ namespace Weapons.Explosions
 
             if (forceDirection.sqrMagnitude < 0.01f)
                 forceDirection = collider.transform.position - transform.position;
-
-            Debug.Log(forceMagnitude);
-            Debug.Log(forceDirection);
-            Debug.Log(forceDirection * forceMagnitude);
 
             rigidbody.velocity += forceDirection * forceMagnitude;
         }

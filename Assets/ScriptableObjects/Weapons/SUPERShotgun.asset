@@ -26,7 +26,7 @@ MonoBehaviour:
   - {x: -0.3, y: -0.3}
   damage:
     damageValue: 3
-    type: 1
+    type: 2
   weaponRaisingTime: 30
   timeBetweenShots: 50
   weaponVisualsPrefab: {fileID: 0}

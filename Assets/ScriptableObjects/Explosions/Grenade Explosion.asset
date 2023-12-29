@@ -16,7 +16,7 @@ MonoBehaviour:
   explosionTime: 10
   explosionForce: 20
   explosionRadiusDamageMultipliers:
-  - radius: 1.5
+  - radius: 0.75
     damageMultiplier: 1
-  - radius: 3
+  - radius: 1.5
     damageMultiplier: 0.5
