@@ -9,7 +9,7 @@ namespace Weapons.Explosions
     [Serializable]
     public struct ExplosionRadiusDamageMultiplier
     {
-        float radius;
-        float damageMultiplier;
+        public float radius;
+        public float damageMultiplier;
     }
 }
