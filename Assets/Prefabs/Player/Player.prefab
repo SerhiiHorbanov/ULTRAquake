@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
-  maxAirSpeed: 3
+  maxAirSpeed: 5
   maxAccel: 2
   frictionMultiplier: 0.8
   rigidBody: {fileID: 3026256219922378902}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 3026256219922378903}
   rigidBody: {fileID: 3026256219922378902}
-  jumpSpeed: 6
+  jumpSpeed: 5
   isJumping: 0
 --- !u!114 &616851513579838290
 MonoBehaviour:
@@ -258,6 +258,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAfterApplyingDamage:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3026256219922378899
@@ -424,10 +427,6 @@ PrefabInstance:
     - target: {fileID: 6452077348303421669, guid: 50c18dec1a1c1aa4f923e91125505888, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6452077348303421669, guid: 50c18dec1a1c1aa4f923e91125505888, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6452077348303421669, guid: 50c18dec1a1c1aa4f923e91125505888, type: 3}
       propertyPath: m_LocalPosition.z
