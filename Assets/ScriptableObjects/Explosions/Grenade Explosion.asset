@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Grenade Explosion
   m_EditorClassIdentifier: 
   explosionRadius: 3
-  explosionTime: 10
+  explosionTime: 20
   explosionForce: 20
+  explosionStartingOpacity: 0.9
+  explosionEndingOpacity: 0.1
   explosionRadiusDamageMultipliers:
   - radius: 0.75
     damageMultiplier: 1
