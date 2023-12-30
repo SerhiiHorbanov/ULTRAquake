@@ -26,9 +26,6 @@ public class EnemyWalkController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        Debug.Log(path.corners.Length);
-
         if (path.corners.Length < 2)
             return;
 
