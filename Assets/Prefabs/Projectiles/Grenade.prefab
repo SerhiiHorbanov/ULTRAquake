@@ -225,4 +225,3 @@ MonoBehaviour:
   explosionRadius: 4
   explosionPower: 20
   projectileComponent: {fileID: 6557494975643397721}
-  explosionData: {fileID: 11400000, guid: 8e985fc6fce62d746ad4a35190a53c80, type: 2}
