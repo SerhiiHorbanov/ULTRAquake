@@ -220,13 +220,13 @@ MonoBehaviour:
   weapons:
   - typeData: {fileID: 11400000, guid: 0fc241817b59f7942a2961d5e17987c6, type: 2}
     owner: {fileID: 3026256219922378897}
-    offset: {x: 0, y: 0, z: 0}
+    shootFrom: {fileID: 3026256219975293581}
   - typeData: {fileID: 11400000, guid: f5391bab086c75746b1b72ab1ac05507, type: 2}
     owner: {fileID: 3026256219922378897}
-    offset: {x: 0, y: 0, z: 0}
+    shootFrom: {fileID: 3026256219975293581}
   - typeData: {fileID: 11400000, guid: 05e29bc75b413de45b0ca4a69c14a74c, type: 2}
     owner: {fileID: 3026256219922378897}
-    offset: {x: 0, y: 0, z: 0}
+    shootFrom: {fileID: 3026256219975293581}
   ammo: {fileID: 616851513579838290}
 --- !u!114 &614955590847859223
 MonoBehaviour:
