@@ -1,6 +1,7 @@
 using HealthAndDamage;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using Weapons.Ammo;
 
 namespace Weapons
@@ -12,7 +13,8 @@ namespace Weapons
         [SerializeField] private GameObject owner;
         [SerializeField] private Transform shootFrom;
 
-
+        public UnityEvent AltAttack;
+        
         public WeaponTypeData TypeData
             => typeData;
         public GameObject Owner
