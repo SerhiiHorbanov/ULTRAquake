@@ -22,7 +22,7 @@ namespace Weapons
             {
                 Weapon weapon = weapons[i];
                 if (weapon.TypeData is ProjectileBasedWeaponTypeData)
-                    weapons[i] = new ProjectileBasedWeapon((ProjectileBasedWeaponTypeData)weapon.TypeData, gameObject, weapon.Offset);
+                    weapons[i] = new ProjectileBasedWeapon((ProjectileBasedWeaponTypeData)weapon.TypeData, gameObject, weapon.ShootFrom);
             }
         }
 
@@ -53,7 +53,7 @@ namespace Weapons
             if (timeBeforeAbleToShoot > 0)
                 return;
 
-            if (currentWeapon.TryAttack(transform.rotation.eulerAngles, ammo))
+            if (currentWeapon.TryAttack(ammo))
                 timeBeforeAbleToShoot = currentWeapon.TypeData.TimeBetweenShots;
         }
 
@@ -73,7 +73,7 @@ namespace Weapons
             return false;
         }
 
-        public void AddWeapon(WeaponTypeData typeData, Vector3 offset)
+        public void AddWeapon(WeaponTypeData typeData, Transform shootFrom)
         {
             string name = typeData.name;
 
@@ -90,15 +90,12 @@ namespace Weapons
             Weapon weaponToAdd;
 
             if (typeData is ProjectileBasedWeaponTypeData)
-                weaponToAdd = new ProjectileBasedWeapon((ProjectileBasedWeaponTypeData)typeData, gameObject, offset);
+                weaponToAdd = new ProjectileBasedWeapon((ProjectileBasedWeaponTypeData)typeData, gameObject, shootFrom);
             else
-                weaponToAdd = new Weapon(typeData, gameObject, offset);
+                weaponToAdd = new Weapon(typeData, gameObject, shootFrom);
 
             weapons.Add(weaponToAdd);
         }
-
-        public void AddWeapon(WeaponTypeData typeData)
-            => AddWeapon(typeData, Vector3.zero);
 
         public void NextWeapon(InputAction.CallbackContext context)
         {

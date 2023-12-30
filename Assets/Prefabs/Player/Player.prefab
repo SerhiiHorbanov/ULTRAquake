@@ -152,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 3026256219975293581}
   sensitivity: 0.1
+  maxXRotation: 90
+  minXRotation: -90
 --- !u!114 &3026256219922378901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
-  maxAirSpeed: 3
+  maxAirSpeed: 5
   maxAccel: 2
   frictionMultiplier: 0.8
   rigidBody: {fileID: 3026256219922378902}
@@ -185,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 3026256219922378903}
   rigidBody: {fileID: 3026256219922378902}
-  jumpSpeed: 6
+  jumpSpeed: 5
   isJumping: 0
 --- !u!114 &616851513579838290
 MonoBehaviour:
@@ -218,13 +220,22 @@ MonoBehaviour:
   weapons:
   - typeData: {fileID: 11400000, guid: 0fc241817b59f7942a2961d5e17987c6, type: 2}
     owner: {fileID: 3026256219922378897}
-    offset: {x: 0, y: 0, z: 0}
+    shootFrom: {fileID: 3026256219975293581}
+    AltAttack:
+      m_PersistentCalls:
+        m_Calls: []
   - typeData: {fileID: 11400000, guid: f5391bab086c75746b1b72ab1ac05507, type: 2}
     owner: {fileID: 3026256219922378897}
-    offset: {x: 0, y: 0, z: 0}
+    shootFrom: {fileID: 3026256219975293581}
+    AltAttack:
+      m_PersistentCalls:
+        m_Calls: []
   - typeData: {fileID: 11400000, guid: 05e29bc75b413de45b0ca4a69c14a74c, type: 2}
     owner: {fileID: 3026256219922378897}
-    offset: {x: 0, y: 0, z: 0}
+    shootFrom: {fileID: 3026256219975293581}
+    AltAttack:
+      m_PersistentCalls:
+        m_Calls: []
   ammo: {fileID: 616851513579838290}
 --- !u!114 &614955590847859223
 MonoBehaviour:
@@ -256,6 +267,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAfterApplyingDamage:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3026256219922378899
@@ -422,10 +436,6 @@ PrefabInstance:
     - target: {fileID: 6452077348303421669, guid: 50c18dec1a1c1aa4f923e91125505888, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6452077348303421669, guid: 50c18dec1a1c1aa4f923e91125505888, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6452077348303421669, guid: 50c18dec1a1c1aa4f923e91125505888, type: 3}
       propertyPath: m_LocalPosition.z

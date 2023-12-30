@@ -9,17 +9,16 @@ namespace Weapons.ProjectileBased
     public class ProjectileBasedWeapon : Weapon
     {
         private ProjectileBasedWeaponTypeData projectileBasedTypeData;
-        public ProjectileBasedWeapon(ProjectileBasedWeaponTypeData weaponTypeData, GameObject owner, Vector3 offset) : base(weaponTypeData, owner, offset)
+        public ProjectileBasedWeapon(ProjectileBasedWeaponTypeData weaponTypeData, GameObject owner, Transform shootFrom) : base(weaponTypeData, owner, shootFrom)
         {
             projectileBasedTypeData = (ProjectileBasedWeaponTypeData)TypeData;
-            //base(weaponTypeData, owner);
         }
 
         public override void Shoot(Vector3 eulerAngle)
         {
             GameObject prefab = projectileBasedTypeData.projectilePrefab;
-            Vector3 position = Owner.transform.position + Offset;
-            Quaternion rotation = Owner.transform.rotation;
+            Vector3 position = ShootFrom.position;
+            Quaternion rotation = ShootFrom.transform.rotation;
 
             GameObject projectileObject = GameObject.Instantiate(prefab, position, rotation);
 

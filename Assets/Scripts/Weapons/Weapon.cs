@@ -1,6 +1,7 @@
 using HealthAndDamage;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using Weapons.Ammo;
 
 namespace Weapons
@@ -10,33 +11,37 @@ namespace Weapons
     {
         [SerializeField] private WeaponTypeData typeData;
         [SerializeField] private GameObject owner;
-        [SerializeField] private Vector3 offset;
+        [SerializeField] private Transform shootFrom;
 
-
+        public UnityEvent AltAttack;
+        
         public WeaponTypeData TypeData
             => typeData;
         public GameObject Owner
             => owner;
-        public Vector3 Offset
-            => offset;
+        public Transform ShootFrom
+            => shootFrom;
 
 
         const float raycastMaxDistance = 100;
 
-        public Weapon(WeaponTypeData weaponTypeData, GameObject owner, Vector3 offset)
+        public Weapon(WeaponTypeData weaponTypeData, GameObject owner, Transform shootFrom)
         {
             this.typeData = weaponTypeData;
             this.owner = owner;
-            this.offset = offset;
+            this.shootFrom = shootFrom;
         }
 
-        public bool TryAttack(Vector3 eulerAngle, AmmoManager ammoManager)
+        public bool TryAttack(AmmoManager ammoManager)
         {
             bool ableToAttack = ammoManager.GetAmmo(typeData.AmmoType) >= typeData.AmmoPerShot;
             ableToAttack |= typeData.IsAmmoInfinite;
 
+
             if (ableToAttack)
             {
+                Vector3 eulerAngle = shootFrom.eulerAngles;
+
                 Attack(eulerAngle);
 
                 if (!typeData.IsAmmoInfinite)
@@ -66,7 +71,7 @@ namespace Weapons
         public virtual void Shoot(Vector3 eulerAngle)
         {
             Vector3 raycastDirection = Quaternion.Euler(eulerAngle) * Vector3.forward;
-            Vector3 raycastOrigin = owner.transform.position + offset;
+            Vector3 raycastOrigin = shootFrom.position;
 
             RaycastHit hit;
 
