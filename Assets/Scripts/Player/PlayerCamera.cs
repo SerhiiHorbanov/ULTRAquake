@@ -22,8 +22,6 @@ namespace Player
 
             newCameraRotationEuler.x = Mathf.Clamp(newCameraRotationEuler.x, minXRotation, maxXRotation);
 
-            Debug.Log($"newCameraRotationEuler = {newCameraRotationEuler}");
-
             cameraTransform.localRotation = Quaternion.Euler(newCameraRotationEuler);
 
             transform.Rotate(0, rotation.x, 0);
