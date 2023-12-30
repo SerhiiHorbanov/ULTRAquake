@@ -15,6 +15,18 @@ namespace Weapons.Explosions
 
         List<Collider> blownColliders = new List<Collider>();
 
+        private Material[] materials;
+
+        private void Awake()
+        {
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+
+            materials = new Material[renderers.Length];
+
+            for (int i = 0; i < renderers.Length; i++)
+                materials[i] = renderers[i].material;
+        }
+
         private void FixedUpdate()
         {
             if (explosionData == null)
@@ -30,8 +42,33 @@ namespace Weapons.Explosions
                 Destroy(gameObject);
         }
 
+        private void LateUpdate()
+        {
+            UpdateMaterialsAplha();
+        }
+
         private float EaseOutExpo(float value)
             => (value == 1) ? 1 : 1 - Mathf.Pow(2, -10 * value);
+
+        public void UpdateMaterialsAplha()
+        {
+            if (framesPassed == 0)
+                return;
+
+            float valueOnCurve = EaseOutExpo((float)framesPassed / explosionData.ExplosionTime);
+
+            float a = framesPassed / explosionData.ExplosionTime;
+            float b = explosionData.ExplosionStartingOpacity - explosionData.ExplosionEndingOpacity;
+            float neededOpacity = (1 - (a * valueOnCurve)) * b + explosionData.ExplosionEndingOpacity;//(1 - (a * b));// * valueOnCurve;
+
+            foreach (Material material in materials)
+            {
+                Color newColor = material.color;
+                newColor.a = neededOpacity;
+
+                material.color = newColor;
+            }
+        }
 
         public void SetData(ExplosionData explosionData, Damage damage)
         {
@@ -80,9 +117,6 @@ namespace Weapons.Explosions
 
                 damageToDeal *= currentMultiplier.damageMultiplier;
             }
-
-            Debug.Log(distance);
-            Debug.Log(damageToDeal);
 
             damageable.ApplyDamage(damageToDeal);
         }
