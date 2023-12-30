@@ -31,6 +31,8 @@ namespace Weapons
         [SerializeField] private int timeBetweenShots;//in FixedUpdate frames
         [SerializeField] private GameObject weaponVisualsPrefab;
 
+        [Header("Recoil")]
+        [SerializeField] private Vector2 kickbackForce;
         public string WeaponName => weaponName;
         public bool IsAmmoInfinite => isAmmoInfinite;
         public AmmoTypes AmmoType => ammoType;

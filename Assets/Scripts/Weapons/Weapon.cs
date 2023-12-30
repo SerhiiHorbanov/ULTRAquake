@@ -54,7 +54,7 @@ namespace Weapons
                 float scatterY = UnityEngine.Random.Range(-typeData.Scatter, typeData.Scatter);
 
                 Vector3 scatteredEulerAngle = eulerAngle + new Vector3(scatterX, scatterY, 0);
-                
+
                 foreach (Vector2 patternShot in typeData.Pattern)
                 {
                     Vector3 shootEulerAngle = scatteredEulerAngle + (Vector3)patternShot;
@@ -76,6 +76,29 @@ namespace Weapons
             IDamageable damageable = hit.collider.GetComponent<IDamageable>();
             if (damageable != null)
                 damageable.ApplyDamage(typeData.Damage);
+
+
         }
+        private void ApplyRecoil()
+        {
+            Vector2 recoilForce = typeData.KickbackForce;
+        }
+    }
+    public bool TryAttack(Vector3 eulerAngle, AmmoManager ammoManager)
+    {
+        bool ableToAttack = ammoManager.GetAmmo(typeData.AmmoType) >= typeData.AmmoPerShot;
+        ableToAttack |= typeData.IsAmmoInfinite;
+
+        if (ableToAttack)
+        {
+            Attack(eulerAngle);
+
+            ApplyRecoil();
+
+            if (!typeData.IsAmmoInfinite)
+                ammoManager.TryUseAmmo(typeData.AmmoType, typeData.AmmoPerShot);
+        }
+
+        return ableToAttack;
     }
 }
