@@ -95,6 +95,17 @@ namespace Weapons
                 weaponToAdd = new Weapon(typeData, gameObject, offset);
 
             weapons.Add(weaponToAdd);
+
+            Weapon weaponToAdd;
+
+            offset.x = Mathf.Abs(offset.x);
+
+            if (typeData is ProjectileBasedWeaponTypeData)
+                weaponToAdd = new ProjectileBasedWeapon((ProjectileBasedWeaponTypeData)typeData, gameObject, offset);
+            else
+                weaponToAdd = new Weapon(typeData, gameObject, offset);
+
+            weapons.Add(weaponToAdd);
         }
 
         public void AddWeapon(WeaponTypeData typeData)
